@@ -1,0 +1,1 @@
+/home/dreamcoder08/somnyx/dev/personal/somnyx-tui/target/release/somnyx-tui: /home/dreamcoder08/somnyx/dev/personal/somnyx-tui/src/app.rs /home/dreamcoder08/somnyx/dev/personal/somnyx-tui/src/data.rs /home/dreamcoder08/somnyx/dev/personal/somnyx-tui/src/main.rs /home/dreamcoder08/somnyx/dev/personal/somnyx-tui/src/ui.rs

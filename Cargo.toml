@@ -1,0 +1,20 @@
+[package]
+name = "somnyx-tui"
+version = "0.1.0"
+edition = "2021"
+description = "SOMNYX TUI Dashboard — dreamcoder08 | Somnus × Nyx"
+authors = ["dreamcoder08"]
+
+[[bin]]
+name = "somnyx-tui"
+path = "src/main.rs"
+
+[dependencies]
+ratatui   = "0.29"
+crossterm = "0.28"
+chrono    = "0.4"
+
+[profile.release]
+opt-level = 3
+strip = true
+lto = true
