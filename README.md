@@ -1,71 +1,77 @@
-# somnyx-tui — Skill-Gap Analysis Terminal UI
+# SOMNYX TUI
 
-> Minimal terminal dashboard for the **Somnus × Nyx** workspace ecosystem.  
-> Real-time system stats, workspace health, inbox tracking, and integrated launchers — all in one TUI.
+> Terminal dashboard for system monitoring — Rust + Ratatui under the Somnus × Nyx identity.
 
-## Quickstart
+A terminal UI dashboard by Dreamcoder08 built with Ratatui and Crossterm, providing real-time system metrics in a lightweight, keyboard-navigable TUI.
+
+---
+
+## Installation
 
 ```bash
+cargo install --path .
+```
+
+Or build from source:
+
+```bash
+cd somnyx-tui
 cargo build --release
 ./target/release/somnyx-tui
 ```
 
-Or install system-wide:
-
-```bash
-./install.sh
-```
+---
 
 ## Usage
 
-| Key | Action |
-|-----|--------|
-| `r` | Refresh all data |
-| `j` | Open today's journal in `$EDITOR` |
-| `y` | Open [yazi](https://yazi-rs.github.io/) file manager in workspace |
-| `f` | Fuzzy-find files with `fd` + `fzf` |
-| `?` | Toggle help overlay |
-| `q` / `Esc` | Exit |
+```bash
+somnyx-tui
+```
 
-## Dashboard
+Navigate with arrow keys. Exit with `q` or `Ctrl+C`.
 
-Three-column layout:
+---
 
-- **Workspace panel** — directory tree with sizes for `dev/`, `archive/`, `vault/`, `notes/`, `media/`, `inbox/`
-- **System panel** — CPU, RAM, disk usage with color-coded bars + uptime, systemd timer status
-- **Inbox / Journal** — inbox file count (warns on >7d old), daily journal entry tracker
+## Architecture
 
-Data refreshes automatically every ~2s (workspace) / ~5s (system).
+A single-binary TUI application using Ratatui for rendering and Crossterm for terminal interaction. Data collection runs on a background tick loop.
 
-## Configuration
+```
+somnyx-tui/
+├── src/
+│   ├── main.rs      # Entry point and app loop
+│   ├── app.rs       # Application state and layout
+│   ├── ui.rs        # Ratatui rendering widgets
+│   └── data.rs      # System data collection
+├── install.sh       # Convenience install script
+└── Cargo.toml       # Rust project manifest
+```
 
-The workspace paths are configurable via environment variables:
+---
 
-| Variable | Default |
-|----------|---------|
-| `SOMNYX_WORKSPACE` | `~/somnyx` |
-| `SOMNYX_ARCHIVE` | `~/archive` |
-| `SOMNYX_VAULT` | `~/vault` |
-| `SOMNYX_NOTES` | `~/notes` |
-| `SOMNYX_MEDIA` | `~/media` |
-| `SOMNYX_INBOX` | `~/inbox` |
+## Tech Stack
 
-## Stack
+| Layer | Tech | Purpose |
+|-------|------|---------|
+| TUI Framework | Ratatui 0.29 | Terminal UI rendering |
+| Terminal Backend | Crossterm 0.28 | Cross-platform terminal control |
+| Language | Rust (edition 2021) | Performance and safety |
 
-**Rust** · **Ratatui** · **Crossterm** · **Terminal UI**
+---
 
-Dependencies:
-- [ratatui](https://ratatui.rs/) (0.29) — terminal UI framework
-- [crossterm](https://github.com/crossterm-rs/crossterm) (0.28) — terminal manipulation
-- [chrono](https://github.com/chronotope/chrono) (0.4) — date/time utilities
+## Project Status
 
-Runtime tools (external): `fd`, `fzf`, `yazi`, `systemctl --user`, `du`, `df`.
+**Status:** Active
+**Version:** 0.1.0
 
-## Proyectos relacionados
-
-- [somnyx-web](https://github.com/Dreamcoder08/somnyx-web) — Web platform in Python
-- [Dreamcoder08](https://github.com/Dreamcoder08) — Profile
+---
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT
+
+---
+
+## SDD
+
+This project sits within the [Dreamcoder08](https://github.com/Dreamcoder08) ecosystem. Documentation is maintained in the [SDD Maestro](../arkelythex/sdd/ecosystem-readme-sdd/00-README.md).
